@@ -3,7 +3,7 @@ frontend www-http
     mode http
     default_backend web-backend
 frontend www-https
-    bind *:443 ssl crt /etc/haproxy/certs/lscblack.tech.pem
+    bind *:443 ssl crt /etc/haproxy/certs/nellyiya.tech.pem
     http-request set-header X-Forwarded-Proto https
     acl letsencrypt-acl path_beg /.well-known/acme-challenge/
     use_backend letsencrypt-backend if letsencrypt-acl
@@ -12,7 +12,7 @@ frontend www-https
 backend web-backend
     redirect scheme https unless { ssl_fc }
     balance roundrobin
-    server 6043-web-01 44.222.228.253:80 check
-    server 6043-web-02 54.221.9.74:80 check
+    server 6043-web-01 54.242.107.28:80 check
+    server 6043-web-02 3.84.185.247:80 check
 backend letsencrypt-backend
    server letsencrypt 127.0.0.1:54321
